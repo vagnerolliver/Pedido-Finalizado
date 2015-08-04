@@ -22,14 +22,14 @@
         {% if store.settings.slip_gateway == 'cobre_gratis' %}
         <a target="_blank" href="{{ order.slip_url }}" id="print-button" class="add_to_cart_button product_type_simple button alt"><i class="fa fa-print fa-2x color-white"></i> &nbsp;IMPRIMIR BOLETO</a>
         {% else %}
+        // a url do boleto é inserida durante o carregamento da página 
         <a target="_blank" href="#" id="print-button" class="add_to_cart_button product_type_simple button alt"><i class="fa fa-print fa-2x color-white"></i> &nbsp;IMPRIMIR BOLETO</a>
-        
         <script type="text/javascript">
           $(function(){
-            por padrão sempre usamos um loader pois o botão pode demora a aparecer
-            e esse script serve para isso
+            // por padrão sempre usamos um loader pois o botão pode demora a aparecer
+            // esse script de carregamento do moip na plataforma
             $("#moip-script").on("success", function() {
-              console.log("carregamento por boleto com sucesso")
+              console.log("Carregamento moip com sucesso")
             });
           });
         </script><br>
