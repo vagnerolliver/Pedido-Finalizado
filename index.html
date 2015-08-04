@@ -1,10 +1,10 @@
- <div class="row">
-    <div>
+ <div class="row ">
+    <div class="col-md-7 col-xs-12">
       <h4>Você receberá uma notificação deste<br>pedido no e-mail <span class="color-orange">{{ order.email }}</span></h4>
       <h4>Pedido <span class="color-orange">{{ order.code }} </span>{% if logged_in %}feito por {{ client.first_name }} com {% endif %} <br>pagamento por <strong>{{ order.payment_method }}</strong></h4>
       <p class="font-light color-gray-light">
 
-      // verifica se o método de pagamento é boleto senao é cartão de crédito
+      // se método de pagamento for boleto cai na primeira condição  
       {% if order.slip %}
       Um e-mail de confirmação será enviado para você assim que seu pagamento for confirmado. Após isso, seu pedido será enviado em até <b>3 dias úteis.</b>
        {% else %}
@@ -15,24 +15,24 @@
     </div>
   </div>
 
-  // só carrega quando o método for boleto boleto
+  // só carrega se o método for boleto
   {% if order.slip %} 
   <div class="row m-b-xl">
     <div class="col-md-3 col-md-offset-5 col-xs-12 input-group">
-        // 
         {% if store.settings.slip_gateway == 'cobre_gratis' %}
-        // use tag html <a> href = {{ order.slip_url }} e o id="print-button"
         <a target="_blank" href="{{ order.slip_url }}" id="print-button" class="add_to_cart_button product_type_simple button alt"><i class="fa fa-print fa-2x color-white"></i> &nbsp;IMPRIMIR BOLETO</a>
         {% else %}
-        // use tag html <a> href = # e o id="print-button" 
         <a target="_blank" href="#" id="print-button" class="add_to_cart_button product_type_simple button alt"><i class="fa fa-print fa-2x color-white"></i> &nbsp;IMPRIMIR BOLETO</a>
+        
         <script type="text/javascript">
           $(function(){
+            por padrão sempre usamos um loader pois o botão pode demora a aparecer
+            e esse script serve para isso
             $("#moip-script").on("success", function() {
-              console.log("foi inserido na tag <a> o link do boleto")
+              console.log("carregamento por boleto com sucesso")
             });
           });
-        </script> <br>
+        </script><br>
        {% endif %} 
     </div>
   </div>
