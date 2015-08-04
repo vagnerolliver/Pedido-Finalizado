@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Finished.liquid by vagnerolliver</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Finished.liquid</h1>
+      <h2 class="project-tagline">Padrão de tags no template finished.liquid </h2>
+      <a href="https://github.com/vagnerolliver/finished.liquid" class="btn">View on GitHub</a>
+      <a href="https://github.com/vagnerolliver/finished.liquid/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/vagnerolliver/finished.liquid/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <div id="main-container">
+  {% assign banner_tag = false %}   
+  {% banners position:"finalizado" %}
+  {% assign banner_tag = true %}   
+  {% assign banner_url = banner.file_url %}
+  {% endbanners %}  
+  <div>
+    <div>
+      
+      <div>
+        <div>
+          <h1>
+<a id="pedido-finalizado-com-sucesso" class="anchor" href="#pedido-finalizado-com-sucesso" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pedido Finalizado Com Sucesso</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <div>
+      <div>
+        <div>
+           <div>
+            <img src="%7B%7B%20" height="202" width="215">
+          </div>
+          <div>
+            <h4>
+<a id="você-receberá-uma-notificação-destepedido-no-e-mail-orderemail" class="anchor" href="#voc%C3%AA-receber%C3%A1-uma-notifica%C3%A7%C3%A3o-destepedido-no-e-mail-orderemail" aria-hidden="true"><span class="octicon octicon-link"></span></a>Você receberá uma notificação deste<br>pedido no e-mail {{order.email}}</h4>
+            <h4>
+<a id="pedido--ordercode---if-logged_in-feito-por--clientfirst_name--com--endif--pagamento-por--orderpayment_method-" class="anchor" href="#pedido--ordercode---if-logged_in-feito-por--clientfirst_name--com--endif--pagamento-por--orderpayment_method-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pedido {{ order.code }} {% if logged_in %}feito por {{ client.first_name }} com {% endif %} <br>pagamento por <strong>{{ order.payment_method }}</strong>
+</h4>
+            <p>
+            {% if order.slip %}
+            Um e-mail de confirmação será enviado para você assim que seu pagamento for confirmado. Após isso, seu pedido será enviado em até <b>3 dias úteis.</b>
+             {% else %}
+            Um e-mail de confirmação será enviado para você assim seu pedido for confirmado e encaminhado para o envio, note que isso pode levar até <b>2 dias úteis</b> a partir de hoje.
+            {% endif %}
+            </p>
+          </div>
+        </div>
+        {% if order.slip %} 
+        <div>
+          <div>
+              {% if store.settings.slip_gateway == 'cobre_gratis' %}
+              <a target="_blank" href="%7B%7B%20order.slip_url%20%7D%7D" id="print-button"><i></i>  IMPRIMIR BOLETO</a>
+              {% else %}
+              <a target="_blank" href="#" id="print-button"><i></i>  IMPRIMIR BOLETO</a>
+               <br>
+             {% endif %} 
+          </div>
+        </div>
+        {% endif %}
+      </div>
+  </div>
+</div>
+
+<p>{% contentfor javascript %}</p>
+
+<pre><code>&lt;script type='text/javascript'&gt;
+  /* &lt;![CDATA[ */
+  var jckqv = {"ajaxurl":"","nonce":"411b718b81","settings":{"trigger_general_method":"click","trigger_position_autoinsert":"1","trigger_position_position":"afteritem","trigger_position_align":"left","trigger_position_margins":["0","0","10","0"],"trigger_styling_autohide":"0","trigger_styling_hoverel":".product","trigger_styling_icon":"eye","trigger_styling_text":"Quickview","trigger_styling_btnstyle":"flat","trigger_styling_padding":["8","10","8","10"],"trigger_styling_btncolour":"#66cc99","trigger_styling_btnhovcolour":"#47C285","trigger_styling_btntextcolour":"#ffffff","trigger_styling_btntexthovcolour":"#ffffff","trigger_styling_borderradius":["4","4","4","4"],"popup_general_gallery":"1","popup_general_overlaycolour":"#000000","popup_general_overlayopacity":"0.8","popup_imagery_imgscale":"fill","popup_imagery_imgtransition":"horizontal","popup_imagery_transitionspeed":"600","popup_imagery_bgcolour":"#ffffff","popup_imagery_navarr":"1","popup_imagery_hidenavarr":"0","popup_imagery_thumbnails":"thumbnails","popup_content_showtitle":"1","popup_content_showprice":"1","popup_content_showrating":"1","popup_content_showbanner":"1","popup_content_showdesc":"short","popup_content_showatc":"1","popup_content_ajaxcart":"1","popup_content_showqty":"1","popup_content_showmeta":"1","popup_content_themebtn":"0","popup_content_btncolour":"#66cc99","popup_content_btnhovcolour":"#47C285","popup_content_btntextcolour":"#ffffff","popup_content_btntexthovcolour":"#ffffff"},"imgsizes":{"catalog":{"width":"700","height":"904","crop":"1"},"single":{"width":"700","height":"904","crop":"1"},"thumbnail":{"width":"120","height":"155","crop":"1"}},"url":"http:\/\/datelli.com.br","text":{"added":"Added!","adding":"Adding to Cart..."}};
+  /* ]]&gt; */
+&lt;/script&gt;
+{{ "jckqv-scripts.min.js" | javascript_tag }}
+
+{{ "swift-slider.min.js" | javascript_tag }}
+
+{{ "jquery.cookie.min.js" | javascript_tag }}
+
+{{ "sf-scripts.min.js" | javascript_tag }} 
+
+{{ "functions.min.js" | javascript_tag }} 
+
+{{ "jquery-ui/mouse.min.js" | javascript_tag }}
+{{ "jquery-ui/slider.min.js" | javascript_tag }}
+{{ "jquery-ui/jquery-ui-touch-punch.min.js" | javascript_tag }}
+</code></pre>
+
+<p>{% endcontentfor %}</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/vagnerolliver/finished.liquid">Finished.liquid</a> is maintained by <a href="https://github.com/vagnerolliver">vagnerolliver</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
