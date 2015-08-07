@@ -15,21 +15,23 @@
     </div>
   </div>
 
-  // só carrega se o método for boleto
+ <!-- só carrega se o método escolhido for boleto -->
   {% if order.slip %} 
   <div class="row m-b-xl">
     <div class="col-md-3 col-md-offset-5 col-xs-12 input-group">
         {% if store.settings.slip_gateway == 'cobre_gratis' %}
-        <a target="_blank" href="{{ order.slip_url }}" id="print-button" class="add_to_cart_button product_type_simple button alt"><i class="fa fa-print fa-2x color-white"></i> &nbsp;IMPRIMIR BOLETO</a>
+        <a target="_blank" href="{{ order.slip_url }}">IMPRIMIR BOLETO</a>
         {% else %}
-        // a url do boleto é inserida durante o carregamento da página 
-        <a target="_blank" href="#" id="print-button" class="add_to_cart_button product_type_simple button alt"><i class="fa fa-print fa-2x color-white"></i> &nbsp;IMPRIMIR BOLETO</a>
+        
+        <!-- botão que será exibido ao final da requisão para o moi gerar o link para imprimir boleto  -->
+        <!-- Este processo pode levar alguns segundos e por padrão carregamos o loader e.. -->
+        {% include "loading" %}
+        <a target="_blank" href="#" id="print-button" style="display:none;">IMPRIMIR BOLETO</a>
+        <!-- ..script padrão que será executado sempre que uma requisão ao moip for conclúida. -->
         <script type="text/javascript">
           $(function(){
-            // por padrão sempre usamos um loader pois o botão pode demora a aparecer
-            // esse script de carregamento do moip na plataforma
             $("#moip-script").on("success", function() {
-              console.log("Carregamento moip com sucesso")
+              $("#loading").fadeOut();
             });
           });
         </script><br>
