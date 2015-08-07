@@ -1,4 +1,4 @@
-.finish .loading_container{
+body.finish .loading_container{
   display: block;
 }
 .loading_container{
